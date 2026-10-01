@@ -8,3 +8,6 @@ Claude outputs/
 
 # empty artifact from a failed redirect run
 results_2dlists.json
+
+# cached lecture transcripts - third-party course content, kept local only
+transcripts/

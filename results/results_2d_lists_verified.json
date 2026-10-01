@@ -1,0 +1,45 @@
+{
+  "replication_check": {
+    "word_count": true,
+    "example_markers": true,
+    "implementation_markers": true,
+    "coverage_ratio": true
+  },
+  "replication_all_match": true,
+  "signals": {
+    "word_count": 1457,
+    "original_stage2": {
+      "example_marker_count": 3,
+      "example_markers_per_1000_words": 2.06,
+      "implementation_marker_count": 1,
+      "implementation_markers_per_1000_words": 0.69
+    },
+    "revised_stage2b": {
+      "code_punctuation_words": 5,
+      "code_keywords": 6,
+      "code_literals": 0,
+      "code_tokens_total": 11,
+      "code_dictation_density_per_1000_words": 7.55
+    },
+    "abandoned": {
+      "example_spans": 2,
+      "example_span_words": 205,
+      "example_span_ratio": 0.141,
+      "mean_span_words": 102.5,
+      "status": "abandoned - does not discriminate, see module docstring"
+    },
+    "topic_coverage": {
+      "found": [
+        "two-dimensional list",
+        "index",
+        "row",
+        "column"
+      ],
+      "missing": [
+        "nested loop",
+        "iteration"
+      ],
+      "coverage_ratio": 0.6666666666666666
+    }
+  }
+}

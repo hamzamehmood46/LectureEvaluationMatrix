@@ -1,0 +1,163 @@
+{
+  "run_date": "2026-10-01",
+  "prediction": "If the inversion was caused by announcement-detection, the revised code-dictation measure should rank OOP above 2D Lists on Implementation, which the original markers failed to do.",
+  "verdict": {
+    "hand_ranks_oop_higher": true,
+    "original_markers_agree_with_hand": false,
+    "revised_measure_agrees_with_hand": true,
+    "prediction_supported": true
+  },
+  "rank_agreement": {
+    "kendall_tau_hand_vs_original": 0.0,
+    "kendall_tau_hand_vs_revised": 1.0,
+    "n": 3,
+    "caveat": "n=3 is far below any threshold for inference. These coefficients are descriptive only and must not be reported as evidence of measure validity."
+  },
+  "lectures": [
+    {
+      "key": "2d_lists",
+      "video_id": "hEh_6otWzNs",
+      "title": "2-Dimensional Lists, Nested For Loops, Images",
+      "hand_scores": {
+        "coverage": 3.5,
+        "examples": 2.0,
+        "implementation": 2.0,
+        "delivery": 1.5,
+        "total": 9.0
+      },
+      "signals": {
+        "word_count": 1457,
+        "original_stage2": {
+          "example_marker_count": 3,
+          "example_markers_per_1000_words": 2.06,
+          "implementation_marker_count": 1,
+          "implementation_markers_per_1000_words": 0.69
+        },
+        "revised_stage2b": {
+          "code_punctuation_words": 5,
+          "code_literals": 0,
+          "code_evidence_total": 5,
+          "code_dictation_density_per_1000_words": 3.43,
+          "ambiguous_keywords_excluded": 6,
+          "code_tokens_total": 5
+        },
+        "abandoned": {
+          "example_spans": 2,
+          "example_span_words": 205,
+          "example_span_ratio": 0.141,
+          "mean_span_words": 102.5,
+          "status": "abandoned - does not discriminate, see module docstring"
+        },
+        "topic_coverage": {
+          "found": [
+            "two-dimensional list",
+            "index",
+            "row",
+            "column"
+          ],
+          "missing": [
+            "nested loop",
+            "iteration"
+          ],
+          "coverage_ratio": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "key": "oop",
+      "video_id": "l_n_7mOqqjs",
+      "title": "Classes, Attributes, Object-Oriented Programming",
+      "hand_scores": {
+        "coverage": 3.5,
+        "examples": 2.0,
+        "implementation": 2.5,
+        "delivery": 1.0,
+        "total": 9.0
+      },
+      "signals": {
+        "word_count": 882,
+        "original_stage2": {
+          "example_marker_count": 1,
+          "example_markers_per_1000_words": 1.13,
+          "implementation_marker_count": 0,
+          "implementation_markers_per_1000_words": 0.0
+        },
+        "revised_stage2b": {
+          "code_punctuation_words": 2,
+          "code_literals": 4,
+          "code_evidence_total": 6,
+          "code_dictation_density_per_1000_words": 6.8,
+          "ambiguous_keywords_excluded": 13,
+          "code_tokens_total": 6
+        },
+        "abandoned": {
+          "example_spans": 1,
+          "example_span_words": 25,
+          "example_span_ratio": 0.028,
+          "mean_span_words": 25.0,
+          "status": "abandoned - does not discriminate, see module docstring"
+        },
+        "topic_coverage": {
+          "found": [
+            "class",
+            "attribute",
+            "object"
+          ],
+          "missing": [
+            "method",
+            "instance",
+            "constructor"
+          ],
+          "coverage_ratio": 0.5
+        }
+      }
+    },
+    {
+      "key": "announcements",
+      "video_id": "U8M4DlCE2ms",
+      "title": "'Computer Science Ethics' as scheduled (announcements clip)",
+      "hand_scores": {
+        "coverage": 0.0,
+        "examples": 0.0,
+        "implementation": 0.0,
+        "delivery": 1.0,
+        "total": 1.0
+      },
+      "signals": {
+        "word_count": 397,
+        "original_stage2": {
+          "example_marker_count": 0,
+          "example_markers_per_1000_words": 0.0,
+          "implementation_marker_count": 0,
+          "implementation_markers_per_1000_words": 0.0
+        },
+        "revised_stage2b": {
+          "code_punctuation_words": 0,
+          "code_literals": 0,
+          "code_evidence_total": 0,
+          "code_dictation_density_per_1000_words": 0.0,
+          "ambiguous_keywords_excluded": 3,
+          "code_tokens_total": 0
+        },
+        "abandoned": {
+          "example_spans": 0,
+          "example_span_words": 0,
+          "example_span_ratio": 0.0,
+          "mean_span_words": 0.0,
+          "status": "abandoned - does not discriminate, see module docstring"
+        },
+        "topic_coverage": {
+          "found": [],
+          "missing": [
+            "ethics",
+            "privacy",
+            "professional responsibility",
+            "bias",
+            "code of conduct"
+          ],
+          "coverage_ratio": 0.0
+        }
+      }
+    }
+  ]
+}
