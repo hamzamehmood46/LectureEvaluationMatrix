@@ -1,0 +1,102 @@
+{
+  "run_date": "2026-10-07",
+  "set": "MIT 6.100L held-out",
+  "hand_scores_locked_before_run": true,
+  "P1_revised_reproduces_hand_ranking": false,
+  "P1_original_reproduces_hand_ranking": false,
+  "lectures": [
+    {
+      "key": "L3_iteration",
+      "video_id": "lzYrMcI92kw",
+      "title": "Lecture 3: Iteration",
+      "hand_implementation": 3.0,
+      "hand_total": 10.0,
+      "signals": {
+        "word_count": 7508,
+        "original_stage2": {
+          "example_marker_count": 2,
+          "example_markers_per_1000_words": 0.27,
+          "implementation_marker_count": 1,
+          "implementation_markers_per_1000_words": 0.13
+        },
+        "revised_stage2b": {
+          "code_punctuation_words": 33,
+          "code_literals": 5,
+          "code_evidence_total": 38,
+          "code_dictation_density_per_1000_words": 5.06,
+          "ambiguous_keywords_excluded": 127,
+          "code_tokens_total": 38
+        },
+        "abandoned": {
+          "example_spans": 2,
+          "example_span_words": 175,
+          "example_span_ratio": 0.023,
+          "mean_span_words": 87.5,
+          "status": "abandoned - does not discriminate, see module docstring"
+        }
+      }
+    },
+    {
+      "key": "L10_lists",
+      "video_id": "Z4bm7xzYpKM",
+      "title": "Lecture 10: Lists and Mutability",
+      "hand_implementation": 3.0,
+      "hand_total": 10.0,
+      "signals": {
+        "word_count": 11570,
+        "original_stage2": {
+          "example_marker_count": 11,
+          "example_markers_per_1000_words": 0.95,
+          "implementation_marker_count": 2,
+          "implementation_markers_per_1000_words": 0.17
+        },
+        "revised_stage2b": {
+          "code_punctuation_words": 77,
+          "code_literals": 7,
+          "code_evidence_total": 84,
+          "code_dictation_density_per_1000_words": 7.26,
+          "ambiguous_keywords_excluded": 221,
+          "code_tokens_total": 84
+        },
+        "abandoned": {
+          "example_spans": 11,
+          "example_span_words": 500,
+          "example_span_ratio": 0.043,
+          "mean_span_words": 45.5,
+          "status": "abandoned - does not discriminate, see module docstring"
+        }
+      }
+    },
+    {
+      "key": "L17_classes",
+      "video_id": "tsMrUdynbQQ",
+      "title": "Lecture 17: Python Classes",
+      "hand_implementation": 2.0,
+      "hand_total": 9.0,
+      "signals": {
+        "word_count": 7926,
+        "original_stage2": {
+          "example_marker_count": 8,
+          "example_markers_per_1000_words": 1.01,
+          "implementation_marker_count": 4,
+          "implementation_markers_per_1000_words": 0.5
+        },
+        "revised_stage2b": {
+          "code_punctuation_words": 37,
+          "code_literals": 6,
+          "code_evidence_total": 43,
+          "code_dictation_density_per_1000_words": 5.43,
+          "ambiguous_keywords_excluded": 147,
+          "code_tokens_total": 43
+        },
+        "abandoned": {
+          "example_spans": 8,
+          "example_span_words": 375,
+          "example_span_ratio": 0.047,
+          "mean_span_words": 46.9,
+          "status": "abandoned - does not discriminate, see module docstring"
+        }
+      }
+    }
+  ]
+}

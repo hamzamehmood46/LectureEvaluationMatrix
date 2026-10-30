@@ -2,6 +2,33 @@
 
 Volunteer research project with **Dr. Maaz Amjad** (Texas Tech University) — a rubric-based matrix for rating the quality of a lecture from its YouTube transcript, and the pipeline that scores it automatically.
 
+## Current direction (October 2026)
+
+The project is now a multimodal study, **"Multimodal Analysis of University Lectures for AI-Assisted Instructional Feedback"**, with the abstract submitted to ASEE 2027. Transcript word-counting was dropped after it failed a pre-registered held-out test on October 7. The framework now combines timestamped transcripts with video analysis, using open-weight models that run locally:
+
+1. **Stage 1** ([`pipeline/stage1_extract.py`](pipeline/stage1_extract.py)) takes a lecture video and produces word-timestamped speech (faster-whisper), optional speaker labels (pyannote), screen-change detection, one keyframe per screen state, OCR text, and the speech aligned to each screen state.
+2. **Stage 2** ([`pipeline/stage2_judge.py`](pipeline/stage2_judge.py)) scores the lecture against [rubric v2](pipeline/rubric_v2.json) with a local model through Ollama. Every quote the model cites is checked against the lecture text.
+3. **Stage 3** ([`pipeline/screen_router.py`](pipeline/screen_router.py), [`pipeline/stage3_vlm.py`](pipeline/stage3_vlm.py)) classifies each keyframe as text, code, terminal or diagram. Code, terminal and diagram screens go to a vision-language model, and code screens are linked to program output when it follows.
+4. **Evaluation** ([`pipeline/evaluation.py`](pipeline/evaluation.py)) computes agreement with expert raters, compares the three input conditions, and estimates the sample size needed.
+
+Every result in [`results/`](results/) can be rebuilt with the scripts in [`tests/`](tests/). Predictions are written down before tests run, in [`preregistration/`](preregistration/). Weekly reports are in [`reports/`](reports/).
+
+```bash
+pip install faster-whisper opencv-python pytesseract numpy
+python pipeline/stage1_extract.py lecture.mp4 --out out_lecture --model small
+python pipeline/stage2_judge.py out_lecture/stage1_segments.json --rubric pipeline/rubric_v2.json --model qwen2.5:7b
+python pipeline/stage3_vlm.py out_lecture/stage1_segments.json --model qwen2.5vl:7b
+```
+
+### Recent results
+
+- **Oct 29:** the screen router classified 240 of 240 held-out synthetic screens correctly, with rules frozen on a separate dev set. A power simulation suggests about 40 lectures are needed to detect a 15-point gain from video at 80% power ([report](reports/Progress_Report_Oct29.docx)).
+- **Oct 23:** Stage 1 found all 6 screen changes in a synthetic lecture with no false ones. OCR recovered all text-slide words but only 25% of diagram words ([report](reports/Progress_Report_Oct23.docx)).
+- **Oct 14:** project reframed as a multimodal study, and the abstract was drafted ([report](reports/Progress_Report_Oct14.docx)).
+- **Oct 7:** the pre-registered held-out test on three MIT lectures failed, which showed that transcripts cannot tell code being shown from code being run ([report](reports/Progress_Report_Oct7_Combined.docx), [pre-registration](preregistration/PREREGISTRATION_2026-10-07.txt)).
+
+## Original transcript-only project (August to October 1)
+
 ## What this is
 
 The goal is to score a lecture out of 10 on how well it covers its stated topic, how many examples it gives, and how much implementation / hands-on demonstration it includes — starting from a YouTube video's transcript.

@@ -1,0 +1,65 @@
+{
+  "changes": [
+    25,
+    55,
+    95,
+    125,
+    150,
+    170
+  ],
+  "build_events": [
+    59,
+    63,
+    67,
+    71,
+    75,
+    79,
+    83,
+    87,
+    91
+  ],
+  "slides": [
+    {
+      "start": 0,
+      "end": 25,
+      "kind": "title",
+      "text": "Lecture 7: Loops and Lists Introduction to Programming"
+    },
+    {
+      "start": 25,
+      "end": 55,
+      "kind": "bullets",
+      "text": "Iteration Loops repeat a block of code A for loop visits each list element The loop variable changes every pass Accumulators collect a running total"
+    },
+    {
+      "start": 55,
+      "end": 95,
+      "kind": "code",
+      "text": "Worked example def total_marks(scores):     total = 0     for s in scores:         if s < 0:             continue         total += s     return total  marks = [78, 91, -1, 64] print(total_marks(marks))"
+    },
+    {
+      "start": 95,
+      "end": 125,
+      "kind": "terminal",
+      "text": "$ python marks.py 233 $ python -c \"print(sum([78, 91, 64]))\" 233 $ python marks.py --debug skipping invalid score -1 233"
+    },
+    {
+      "start": 125,
+      "end": 150,
+      "kind": "diagram",
+      "text": "Memory model marks list 78 91 -1 64 total"
+    },
+    {
+      "start": 150,
+      "end": 170,
+      "kind": "bullets",
+      "text": "Iteration Lists are mutable sequences append adds an element at the end Index assignment replaces one element Aliasing shares one list object"
+    },
+    {
+      "start": 170,
+      "end": 200,
+      "kind": "code_full",
+      "text": "Worked example def total_marks(scores):     total = 0     for s in scores:         if s < 0:             continue         total += s     return total  marks = [78, 91, -1, 64] print(total_marks(marks))"
+    }
+  ]
+}

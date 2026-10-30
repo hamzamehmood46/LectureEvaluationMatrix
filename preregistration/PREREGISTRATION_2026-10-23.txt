@@ -1,0 +1,35 @@
+PRE-REGISTRATION: video stage test on MIT 6.100L Lectures 3, 10 and 17
+Written 2026-10-23, before Stage 1 has been run on these videos and before any
+language model or vision-language model has seen them.
+
+Background
+Under rubric v1, hand scoring placed Lecture 17 (Python Classes) below Lectures 3
+(Iteration) and 10 (Lists and Mutability) on Implementation because Lecture 17
+never runs its code. The transcript measures could not see this (report of 2026-10-07).
+Rubric v2 splits the dimension; IM2 is "artifact executed or verified".
+
+Predictions
+P1  Stage 1 change detection. On a spot-check of 20 randomly chosen detected
+    changes per lecture, at least 16 (80%) are real screen changes.
+    Fails if fewer than 16 are real in any lecture.
+
+P2  Stage 3, IM2. The VLM marks at least one screen state as showing program
+    output or a console in Lecture 3 and in Lecture 10, and none in Lecture 17.
+    Fails if Lecture 3 or 10 has no such state, or if Lecture 17 has one that a
+    human check confirms shows real output. (If a human check confirms real
+    output in Lecture 17, the v1 hand score was wrong, and that is reported.)
+
+P3  Condition comparison on IM2. With video, Lecture 17 scores strictly below
+    both Lectures 3 and 10. With transcript only, it does not (tie or inversion).
+    Fails if the transcript-only judge already places Lecture 17 strictly below
+    both, in which case video adds nothing on this case and that is reported.
+
+Fixed in advance
+Stage 1 settings: threshold 0.35, min gap 3 s, webcam mask only if the video has
+an inset (located by eye before running). Rubric: rubric_v2.json as dated today.
+Judge prompt: stage2_judge.py as dated today, temperature 0.
+
+Limits stated now
+Three lectures, one course, one instructor. Hand scores used for comparison
+were made under rubric v1 by a single rater. P2 and P3 are a first check of
+the video stage, not the paper's evaluation.

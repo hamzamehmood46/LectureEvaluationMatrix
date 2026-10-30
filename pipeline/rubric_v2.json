@@ -1,0 +1,71 @@
+{
+  "version": "2.0-draft",
+  "date": "2026-10-23",
+  "status": "Draft for expert review. Not yet validated. Thresholds were written before any lecture was scored with this version.",
+  "scale": "Each criterion is scored 0, 1 or 2. Level 2 requires the specific behaviour named, not general competence. Results are reported as a profile per dimension, with no single total.",
+  "flags": [
+    {"id": "F1", "name": "Content error", "rule": "Any factual or technical error stated and not corrected later in the lecture. Reported with its timestamp; not scored."}
+  ],
+  "descriptive": [
+    {"id": "D1", "name": "Time per learning objective", "rule": "Minutes of lecture spent on each stated objective, from timestamps. Reported, not scored."}
+  ],
+  "dimensions": [
+    {"id": "TC", "name": "Topic coverage and depth relative to learning objectives",
+     "criteria": [
+       {"id": "TC1", "name": "Objective development", "evidence": "transcript, slides",
+        "scored_per": "learning objective, then averaged",
+        "levels": {"0": "Not addressed, or mentioned only in passing (a single mention or under one minute).",
+                   "1": "Explained: defined and followed by at least one sentence of explanation.",
+                   "2": "Developed: explained, tied to an example or demonstration, and at least one misconception, edge case or limitation is discussed."}},
+       {"id": "TC2", "name": "Objective completeness", "evidence": "transcript, slides",
+        "levels": {"0": "Fewer than half of the stated objectives reach level 1 on TC1.",
+                   "1": "At least half reach level 1.",
+                   "2": "All reach level 1 and at least half reach level 2."}}
+     ]},
+    {"id": "EX", "name": "Presence and development of examples",
+     "criteria": [
+       {"id": "EX1", "name": "Example coverage", "evidence": "transcript, video",
+        "levels": {"0": "No concrete example.",
+                   "1": "Concrete examples for fewer than half of the objectives.",
+                   "2": "Concrete examples for at least half of the objectives."}},
+       {"id": "EX2", "name": "Example development", "evidence": "transcript, video",
+        "levels": {"0": "Examples are only stated.",
+                   "1": "At least one example is worked through step by step.",
+                   "2": "At least one worked example is also checked or varied: the result is verified, an input is changed, or a counterexample is shown."}},
+       {"id": "EX3", "name": "Example variety", "evidence": "transcript, video",
+        "levels": {"0": "One kind of example.",
+                   "1": "Two kinds.",
+                   "2": "Three or more kinds (everyday analogy, numeric case, code, diagram, counterexample)."}}
+     ]},
+    {"id": "IM", "name": "Implementation and demonstration activities",
+     "criteria": [
+       {"id": "IM1", "name": "Artifact shown", "evidence": "video first, transcript second",
+        "levels": {"0": "No code, derivation or diagram is shown.",
+                   "1": "Shown only as finished material on slides.",
+                   "2": "Built live during the lecture: typed, written or drawn on screen or board."}},
+       {"id": "IM2", "name": "Artifact executed or verified", "evidence": "video first, transcript second",
+        "levels": {"0": "Never run, tested or checked.",
+                   "1": "Run or checked once, with the result visible on screen.",
+                   "2": "Result compared against an expectation stated beforehand, or an error deliberately triggered and then fixed."}},
+       {"id": "IM3", "name": "Link to concept", "evidence": "transcript, video",
+        "levels": {"0": "The demonstration is not linked to the concept being taught.",
+                   "1": "Linked by a general statement.",
+                   "2": "The instructor points to specific lines, steps or parts and says which concept each one implements."}}
+     ]},
+    {"id": "OS", "name": "Instructional organization and sequencing",
+     "criteria": [
+       {"id": "OS1", "name": "Framing", "evidence": "transcript, slides",
+        "levels": {"0": "No statement of topic or goals.",
+                   "1": "Topic stated at the start or summarised at the end.",
+                   "2": "Objectives stated at the start and revisited in a closing summary."}},
+       {"id": "OS2", "name": "Sequencing", "evidence": "transcript",
+        "levels": {"0": "A concept is used before it is introduced.",
+                   "1": "Concepts appear in a workable order without explicit links.",
+                   "2": "New ideas are explicitly connected to ones already covered."}},
+       {"id": "OS3", "name": "Checks for understanding", "evidence": "transcript, diarization",
+        "levels": {"0": "None.",
+                   "1": "Questions asked but not answered by students, or rhetorical only.",
+                   "2": "Questions answered by students, or an in-class exercise."}}
+     ]}
+  ]
+}

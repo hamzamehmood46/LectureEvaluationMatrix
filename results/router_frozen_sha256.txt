@@ -1,0 +1,6 @@
+6299988b060608dd376583107f7e6096f55123ccced418f3e03008a8097adc2d  pipeline/screen_router.py
+Thu Oct 29 20:51:18 UTC 2026
+Hash above is of screen_router.py when its rules were frozen, before the test split was scored.
+Afterwards an apply_mask() helper and a mask argument to classify_image() were added so the
+webcam mask from Stage 1 is honoured. The classification rules and thresholds were not changed,
+and the test split was re-scored with the final file (same result, 240/240).

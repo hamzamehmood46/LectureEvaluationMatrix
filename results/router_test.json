@@ -1,0 +1,27 @@
+{
+ "split": "test",
+ "accuracy": 1.0,
+ "confusion": {
+  "text": {
+   "text": 60
+  },
+  "code": {
+   "code": 60
+  },
+  "terminal": {
+   "terminal": 60
+  },
+  "diagram": {
+   "diagram": 60
+  }
+ },
+ "visual_routed": [
+  180,
+  180
+ ],
+ "text_skipped": [
+  60,
+  60
+ ],
+ "errors": []
+}

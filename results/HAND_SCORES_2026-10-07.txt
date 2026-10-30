@@ -1,0 +1,165 @@
+HAND-SCORES — held-out MIT 6.100L set
+Recorded 2026-10-07 while reading each transcript in full.
+Automated measures NOT run and NOT consulted at time of scoring.
+Rater: Hamza Mehmood (same rater as all prior scoring — see limitations).
+
+Rubric v1: Topic Coverage 3.5 / Examples 2.0 / Implementation 3.0 / Delivery 1.5
+
+===========================================================================
+LECTURE 3: ITERATION  (lzYrMcI92kw, 7,508 words)
+===========================================================================
+Topic Coverage                                                    3.5 / 3.5
+  TC1 Scope match      1.0  Covers while loops, for loops, range, infinite
+                            loops and the loop-variable pattern. Nothing in
+                            the stated topic is left untouched.
+  TC2 Depth            1.0  Sub-concepts genuinely explained: automatic
+                            condition re-checking, why infinite loops happen,
+                            range start/stop/step, for-vs-while trade-off,
+                            the accumulator pattern.
+  TC3 Accuracy         1.0  Correct throughout, including the subtle points
+                            (case-sensitive string comparison, up-to-but-not-
+                            including semantics, += shorthand).
+  TC4 Coherence        0.5  Opens with an explicit recap of branching and
+                            strings from the previous lecture and builds
+                            iteration on top of it.
+
+Examples                                                          2.0 / 2.0
+  EX1 Presence         1.0  Several: a Lost Woods game, a Netflix analogy,
+                            printing n characters, factorial, summing a range.
+  EX2 Variety          0.5  A game, an everyday analogy, numeric computation
+                            and a debugging exercise — genuinely different in
+                            kind, not the same example restated.
+  EX3 Clarity          0.5  Walked through step by step with memory diagrams
+                            and Python Tutor traces rather than stated.
+
+Implementation                                                    3.0 / 3.0
+  IM1 Presence         1.5  Runs programs live, comments out a line to induce
+                            an infinite loop on purpose, demonstrates stopping
+                            it, steps through Python Tutor, adds print
+                            statements to debug.
+  IM2 Correctness      1.0  Output is reported as it runs ("it gave me a 7",
+                            then "i is 3, i is 4, i is 5, and the sum is 12"),
+                            so execution is confirmed rather than claimed.
+  IM3 Connection       0.5  Each run is tied back to the loop-variable pattern
+                            being taught.
+
+Delivery & Structure                                              1.5 / 1.5
+  DS1 Framing          0.5  States the topic at the start, recaps at the
+                            start, summarises at the end.
+  DS2 Pacing           0.5  Appropriate for an introductory audience, with
+                            deliberate restatement of hard points.
+  DS3 Engagement       0.5  Repeated questions to the class with student
+                            answers, plus "You Try It" exercises mid-lecture.
+
+TOTAL                                                           10.0 / 10.0
+
+Note recorded at scoring time: a perfect score is itself worth examining. It
+may indicate the rubric does not discriminate at the top of the range on
+professionally produced material. Flagged before seeing the other two.
+
+===========================================================================
+LECTURE 17: PYTHON CLASSES  (tsMrUdynbQQ, 7,926 words)
+===========================================================================
+Topic Coverage                                                    3.5 / 3.5
+  TC1 Scope match      1.0  Data abstraction, the class keyword, __init__,
+                            self, data attributes, methods, dot notation,
+                            instances. Complete for an introductory lecture.
+  TC2 Depth            1.0  self is explained repeatedly and from several
+                            angles, including a blueprint-and-room analogy
+                            and an explicit demystification showing that
+                            c.distance(orig) equals Coordinate.distance(c,orig).
+  TC3 Accuracy         1.0  Correct, including the subtle points about why
+                            self-prefixed names persist and plain locals do not.
+  TC4 Coherence        0.5  Builds explicitly on lists, dictionaries and
+                            function definitions from earlier lectures.
+
+Examples                                                          2.0 / 2.0
+  EX1 Presence         1.0  Cars, an elevator, an employee, a queue, a stack
+                            of pancakes, a living-room blueprint, and the
+                            running 2D coordinate example.
+  EX2 Variety          0.5  Real-world objects, data structures and a
+                            mathematical object — different in kind.
+  EX3 Clarity          0.5  The coordinate example is carried end to end with
+                            memory diagrams rather than stated once.
+
+Implementation                                                    2.0 / 3.0
+  IM1 Presence         1.0  Real syntax is shown and explained in detail, but
+                            from slides. No evidence in the transcript of code
+                            being executed during the lecture.
+  IM2 Correctness      0.5  Values are traced by hand ("this will grab for me
+                            the x value of C, 3") rather than produced by
+                            running the code, so correctness is asserted and
+                            not demonstrated. Scored conservatively per the
+                            Week 2 convention.
+  IM3 Connection       0.5  The code is tied tightly back to the blueprint
+                            idea it implements.
+
+Delivery & Structure                                              1.5 / 1.5
+  DS1 Framing          0.5  Opens by naming the topic and its four-lecture
+                            arc; closes by previewing the next lecture.
+  DS2 Pacing           0.5  Deliberately repetitive on the hardest idea.
+  DS3 Engagement       0.5  Several student questions taken and answered;
+                            repeated comprehension checks.
+
+TOTAL                                                            9.0 / 10.0
+
+===========================================================================
+LECTURE 10: LISTS AND MUTABILITY  (Z4bm7xzYpKM, 11,570 words)
+===========================================================================
+Topic Coverage                                                    3.5 / 3.5
+  TC1 Scope match      1.0  Mutability, index assignment, append, sort,
+                            reverse, sorted, split, join, extend, clear and
+                            object identity. Exceeds the stated topic.
+  TC2 Depth            1.0  Memory diagrams throughout; why append returns
+                            None; side effects; three worked "tricky" loop
+                            cases including one that does not terminate.
+  TC3 Accuracy         1.0  Correct, including the distinction between
+                            mutating an object and rebinding a name.
+  TC4 Coherence        0.5  Recaps tuples and lists from the previous lecture
+                            and previews the next.
+
+Examples                                                          2.0 / 2.0
+  EX1 Presence         1.0  Numerous: index assignment, the L1-L4 exercise,
+                            make_ordered_list, remove_elem, count_words, the
+                            sorted-words exercise, three loop traps, an id()
+                            demonstration.
+  EX2 Variety          0.5  Memory diagrams, student exercises, deliberate
+                            counterexamples and console demonstrations.
+  EX3 Clarity          0.5  Each is traced step by step.
+
+Implementation                                                    3.0 / 3.0
+  IM1 Presence         1.5  Code written live with the class and run; console
+                            session used directly to demonstrate id().
+  IM2 Correctness      1.0  Output reported as produced: "that gives me 1 ...
+                            looks like it's correct", "should print 3 and 12.
+                            And it does", and id values ending 808 then 312.
+  IM3 Connection       0.5  Every run is used to settle a conceptual point
+                            about mutation.
+
+Delivery & Structure                                              1.5 / 1.5
+  DS1 Framing          0.5  Recap, roadmap and closing summary all present.
+  DS2 Pacing           0.5  Appropriate; invites questions repeatedly.
+  DS3 Engagement       0.5  Sustained student dialogue and several in-class
+                            exercises.
+
+TOTAL                                                           10.0 / 10.0
+
+===========================================================================
+SUMMARY — Implementation dimension (the one under test)
+===========================================================================
+  Lecture 3  Iteration              3.0 / 3.0
+  Lecture 10 Lists and Mutability   3.0 / 3.0
+  Lecture 17 Python Classes         2.0 / 3.0
+
+NOTED AT SCORING TIME, BEFORE RUNNING ANY MEASURE:
+Two of the three tie at 3.0. Prediction P4 anticipated this and stated that
+P1 would then be a weak test. It is. Only one ordered pair is available:
+Lectures 3 and 10 must both outrank Lecture 17.
+
+A second observation, also recorded before measurement. What separates
+Lecture 17 from the other two is not how much code appears — it is dense with
+dictated syntax — but that the code is never executed. The rubric penalises
+it on IM1 and IM2 for exactly that. A measure counting spoken code register
+cannot see whether code was run, so it may well rank Lecture 17 at or above
+the other two. If it does, that is a real limitation of the measure rather
+than noise, and it must be reported as such.

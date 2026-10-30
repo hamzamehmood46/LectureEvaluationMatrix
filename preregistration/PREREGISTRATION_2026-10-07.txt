@@ -1,0 +1,79 @@
+PRE-REGISTRATION — held-out validation of the revised Implementation measure
+Written 2026-10-07, BEFORE any transcript was read or any measure was run.
+
+WHY THIS EXISTS
+The 2026-10-01 result reported rank agreement of 1.00 between the revised
+code-dictation measure and hand-scores on three Howard CSCI 100 lectures. That
+figure is not evidence, because the measure was repaired after watching it fail
+on those same three lectures. The Oct 1 report named the required next step:
+test it on lectures it has never seen, from a different course and instructor.
+
+This file records the predictions in advance so that the outcome cannot be
+reinterpreted after the fact.
+
+THE HELD-OUT SET
+Three lectures from MIT 6.100L, Introduction to CS and Programming using
+Python, Fall 2022, instructor Ana Bell. Different institution, different
+instructor, different recording style from the Howard set.
+
+  Z4bm7xzYpKM   Lecture 10: Lists and Mutability     11,570 words
+  tsMrUdynbQQ   Lecture 17: Python Classes            7,926 words
+  lzYrMcI92kw   Lecture 3: Iteration                   7,508 words
+
+Two of the three are topic-matched to the Howard pair (lists; classes), which
+lets us ask whether the measure tracks the topic or the instructor's delivery.
+
+KNOWN CONFOUND, STATED IN ADVANCE
+These are complete class periods. The Howard videos were numbered segments of
+a class period (882-1,457 words). Any cross-institution comparison of absolute
+counts is therefore invalid. Only the density measure and within-set rankings
+may be compared across the two sets, and even the density may be affected if
+longer recordings dilute or concentrate code speech. This limitation is not a
+result of the test; it is a property of the corpus and must be reported.
+
+PREDICTIONS
+
+P1. Ordering within the MIT set.
+    Hand-scores on Implementation will rank the three lectures in some order.
+    The revised measure will reproduce that order.
+    FAILS IF: the measure's ranking disagrees with the hand ranking on any pair.
+
+P2. The announcements control.
+    No prediction is made here; the MIT set contains no non-instructional
+    video. The zero-scoring behaviour was already demonstrated on Howard.
+
+P3. Polysemy regression on unseen text.
+    The word "class" will appear in Lecture 17 in the Python sense and may
+    appear elsewhere in the course-administration sense. The measure excludes
+    ambiguous keywords from the score, so course-sense usage must not inflate
+    any lecture.
+    FAILS IF: a lecture with little code scores highly on the strength of
+    ambiguous vocabulary.
+
+P4. Expected direction, stated so it can be wrong.
+    Lecture 17 (Python Classes) and Lecture 10 (Lists and Mutability) are both
+    expected to contain substantial dictated code. Lecture 3 (Iteration) is an
+    early lecture and expected to contain code as well, so no strong ordering
+    is predicted between them. If the hand-scores come out close together, P1
+    becomes a weak test and that must be said rather than glossed over.
+
+P5. Generalisation of the Howard finding.
+    The original marker counts were shown to invert the Howard ranking. If
+    those markers also fail to reproduce the MIT hand ranking, the weakness is
+    a property of the method rather than of one course.
+    FAILS IF: the original markers reproduce the MIT ranking as well as the
+    revised measure does, which would mean the Howard inversion was incidental.
+
+PROCEDURE, FIXED IN ADVANCE
+  1. This file is written and not edited afterwards.
+  2. Each transcript is read in full and hand-scored against rubric v1, with
+     the automated measures NOT run and NOT consulted.
+  3. Hand-scores are written to a separate file and not revised afterwards.
+  4. Only then are the automated measures run.
+  5. The comparison is reported whichever way it falls.
+
+RATER
+One rater (Hamza Mehmood), who also designed the rubric. This remains the
+project's most serious methodological weakness and is not addressed by this
+test. Agreement reported here is agreement between two measurement methods,
+not inter-rater reliability.
