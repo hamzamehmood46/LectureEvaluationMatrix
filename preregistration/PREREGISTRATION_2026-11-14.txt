@@ -1,0 +1,143 @@
+PRE-REGISTRATION — communication and grammar quality of university lectures
+Written 2026-11-14, BEFORE any communication metric was computed and BEFORE any
+transcript was read or scored.
+
+WHY THIS EXISTS
+A second study asks how clearly and correctly university lecturers speak, using
+automatic transcripts of recorded lectures. Automated language scoring is easy
+to bend after the fact: thresholds, windows and word lists can all be tuned
+until a pleasing pattern appears. This file fixes the measures, the sample, the
+analysis and the predictions first, so that the result cannot be reinterpreted.
+
+STATE OF THE DATA AT WRITING
+All 103 lectures have been transcribed (faster-whisper large-v3, 2026-11-14).
+The only facts computed from them so far are counts: 103 transcripts, 116.0
+hours of audio, 1,046,830 words. No transcript has been read for quality, and no
+rate, score or comparison has been produced. If that stops being true before
+this file is committed, the commit date, not this paragraph, is authoritative.
+
+THE CORPUS
+communication/corpus_manifest.csv (103 lectures, each at least 45 minutes).
+Three STEM courses: Stanford CS229 Machine Learning (18), MIT 8.04 Quantum
+Physics (18), Harvard Stat 110 Probability (18). Three non-STEM courses: Harvard
+Justice (13), MIT 14.01 Economics (18), Stanford Human Behavioral Biology (18).
+Sampling was evenly spaced within each course by a fixed rule. No lecture is
+added, dropped or replaced after this point; if a transcript proves unusable it
+is kept in the data, flagged, and reported.
+
+KNOWN CONFOUNDS, STATED IN ADVANCE
+C1. Each course has one main lecturer (a few have guests), so course, lecturer
+    and field are the same thing. With three STEM and three non-STEM courses, a
+    STEM versus non-STEM difference cannot be separated from lecturer style. The
+    smallest exact permutation p-value at course level is 1/10 (20 ways to split
+    six courses 3 and 3, two-sided), so no confirmatory STEM claim is possible.
+    That comparison is descriptive only and will be labelled as such.
+C2. Whisper large-v3 tends to drop spoken fillers ("um", "uh") and adds its own
+    punctuation and casing. Filler counts are therefore a lower bound, and
+    sentence length and grammar rates describe the transcript as Whisper wrote
+    it, not the raw speech. Comparisons are valid only within this one system.
+C3. No speaker diarization. Student questions and guest voices (notably
+    Justice) are inside the transcript and are not removed.
+C4. Spoken language breaks written grammar rules legitimately (fragments,
+    restarts). Grammar rates are relative indicators, not a verdict that a
+    lecturer is "wrong".
+C5. A transcript still shows the subject matter, so the judge cannot be fully
+    blind to field or institution, even with titles and course names removed.
+C6. Lectures differ in length and in how much is board work or silence. All
+    rates are normalised (per 1,000 words or per minute of audio).
+
+MEASURES, FIXED IN ADVANCE
+Deterministic, computed on the full transcript with word timestamps:
+  M1 speaking rate: words per minute of speech (total words divided by the sum
+     of segment durations that Whisper's voice-activity filter kept).
+  M2 filler rate: per 1,000 words, counting the tokens um, uh, er, ah, hmm and
+     the phrases "you know" and "i mean". The word "like" is excluded because
+     it is ambiguous, for the same reason ambiguous keywords were excluded in
+     the Implementation measure.
+  M3 mean sentence length in words, using Whisper's sentence boundaries.
+  M4 long-pause rate: gaps of 1.0 second or more between consecutive words, per
+     10 minutes of audio.
+  M5 grammar rate: LanguageTool (en-US, version recorded) matches per 1,000
+     words, using the GRAMMAR category only, as listed in score_comm.py;
+     punctuation, spelling and typography categories are excluded.
+Model judged, by Qwen2.5 7B Instruct through Ollama, temperature 0, fixed seed,
+model tag and digest recorded:
+  Each lecture is cut into five non-overlapping windows of 1,000 words starting
+  at 10, 30, 50, 70 and 90 percent of the transcript. The judge sees one window
+  at a time with no title, course name or institution, and scores 0 to 2 on each
+  criterion in rubric_comm_v1.json (clarity of explanation, organisation and
+  signposting, definition of terms, use of examples, and correctness of spoken
+  grammar). Every score must be backed by a verbatim quote that is checked as a
+  substring of the window; a score whose quote does not match is discarded and
+  counted. The lecture score is the mean over valid windows.
+rubric_comm_v1.json is committed and then frozen before the judge is first run.
+
+HAND CHECK
+Twelve lectures, two per course, are chosen with random seed 20261114 from the
+sorted manifest ids. For each, the window at 50 percent is read and scored
+against the same rubric by hand, with the judge and the deterministic metrics
+NOT run and NOT consulted. Hand-scores go in a separate file and are not revised.
+
+PREDICTIONS
+P1. Judge validity.
+    Spearman correlation between the judge's lecture score and the hand score
+    on the 12 hand-checked windows is at least 0.60.
+    FAILS IF: it is below 0.40. Between 0.40 and 0.60 is reported as
+    inconclusive, not as support.
+P2. Judge stability.
+    A second run of the judge with a different seed on 20 randomly chosen
+    lectures (seed 20261115) agrees within one point on at least 90 percent of
+    criterion scores.
+    FAILS IF: agreement is below 90 percent, in which case judge results are
+    reported as unreliable.
+P3. Pipeline sanity.
+    At least 95 percent of lectures have a speaking rate (M1) between 110 and
+    190 words per minute.
+    FAILS IF: more lectures fall outside, which would indicate a transcription
+    or timing fault to fix before any other result is read.
+P4. Filler undercount (C2).
+    The median filler rate (M2) is below 5 per 1,000 words, because Whisper
+    drops most fillers. A higher median would contradict C2 and is reported.
+P5. Pauses and board work. Stated so it can be wrong.
+    The three STEM courses show a higher long-pause rate (M4) than the three
+    non-STEM courses, because derivations are written while the lecturer is
+    quiet. Descriptive only (C1).
+P6. Lecturer dominates.
+    Between-course differences explain more than half of the variance in the
+    judge score (intraclass correlation above 0.5). If so, any STEM versus
+    non-STEM gap is mostly lecturer style, and this is stated in the report.
+P7. Agreement between methods.
+    The judge's grammar criterion is negatively correlated with the LanguageTool
+    grammar rate (M5) across lectures, with Spearman at most -0.30.
+    FAILS IF: the correlation is above -0.10, meaning the two grammar measures
+    do not track each other.
+
+ANALYSIS, FIXED IN ADVANCE
+  Confirmatory: P1, P2, P3, P4, P7, each against its stated threshold, with no
+  correction needed because each is a single pre-stated test.
+  Descriptive: course means and spreads for M1 to M5 and the judge score, the
+  STEM versus non-STEM contrast (P5), and the variance split (P6), with
+  bootstrap confidence intervals resampling lectures within course.
+  Nothing is dropped for being surprising. Lectures with fewer than three valid
+  judged windows are reported and excluded only from the judge-based results.
+
+PROCEDURE, FIXED IN ADVANCE
+  1. This file is committed and not edited afterwards. A later change goes in a
+     new dated file that says what changed and why.
+  2. rubric_comm_v1.json and score_comm.py (all word lists, thresholds and the
+     LanguageTool rule set) are committed and frozen.
+  3. The 12 hand-scores are written to a separate file and frozen.
+  4. Only then are the deterministic metrics and the judge run on all 103.
+  5. analyze.py runs once on the frozen outputs. All results are reported,
+     whichever way each prediction falls.
+
+RATER
+One rater (Hamza Mehmood), who also designed the rubric. This remains the
+project's most serious methodological weakness and is not addressed here.
+Agreement in P1 is agreement between a person and a model, not inter-rater
+reliability between independent experts.
+
+DATA HANDLING
+Audio and transcripts are third-party course content. They stay on the local
+machine and are git-ignored. Only the manifest, code, rubric, scores and this
+file are published.
