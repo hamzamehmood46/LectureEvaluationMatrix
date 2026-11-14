@@ -14,3 +14,8 @@ transcripts/
 
 # generated test data (synthetic videos and screen images), rebuilt by the scripts in tests/
 tests/data/
+
+# lecture audio/transcripts for the communication study (third-party content, local only)
+communication/data/
+*.m4a
+*.webm
