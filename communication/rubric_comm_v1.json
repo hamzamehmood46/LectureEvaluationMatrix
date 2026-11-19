@@ -1,0 +1,33 @@
+{
+  "version": "1.0-draft",
+  "date": "2026-11-19",
+  "status": "Draft. Becomes frozen when committed with the tag 'rubric-frozen' and before the judge is first run. Thresholds were written before any lecture was scored.",
+  "scale": "Each criterion is scored 0, 1 or 2 per 1,000-word window. Level 2 requires the specific behaviour named, not general competence. Reported as a profile per criterion, with no single total.",
+  "judge": {"model": "qwen2.5:7b-instruct", "temperature": 0, "sees": "one window, no title, course or institution"},
+  "evidence_rule": "Every score needs a verbatim quote from the window. A score whose quote is not found in the window is discarded and counted.",
+  "flags": [
+    {"id": "F1", "name": "Suspected content error", "rule": "Any statement that appears technically or factually wrong. Reported with a quote and is never scored. Every flag is checked by hand."}
+  ],
+  "criteria": [
+    {"id": "CL", "name": "Clarity of explanation",
+     "levels": {"0": "Ideas are stated without explanation, or the explanation is hard to follow.",
+                "1": "Main ideas are explained in plain steps.",
+                "2": "Explained in plain steps and restated or checked in different words at least once."}},
+    {"id": "OR", "name": "Organisation and signposting",
+     "levels": {"0": "No indication of where the talk is going or how parts connect.",
+                "1": "Some structure is stated (a plan, a transition or a summary).",
+                "2": "Structure is stated at the start of the segment and linked back to it at the end."}},
+    {"id": "DT", "name": "Definition of terms",
+     "levels": {"0": "Technical terms are used without being defined.",
+                "1": "Most new terms are defined when first used.",
+                "2": "Every new term is defined when first used and tied to something already known."}},
+    {"id": "EX", "name": "Use of examples",
+     "levels": {"0": "No example, analogy or case.",
+                "1": "At least one concrete example.",
+                "2": "A concrete example plus a statement of what it shows or where it stops applying."}},
+    {"id": "GR", "name": "Spoken grammar",
+     "levels": {"0": "Frequent broken sentences that hinder understanding.",
+                "1": "Occasional restarts or fragments that do not hinder understanding.",
+                "2": "Sentences are complete and well formed apart from ordinary speech restarts."}}
+  ]
+}

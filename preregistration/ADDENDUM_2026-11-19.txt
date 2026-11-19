@@ -1,0 +1,81 @@
+ADDENDUM to PREREGISTRATION_2026-11-14.txt — added metrics and the multimodal plan
+Written 2026-11-19, BEFORE any metric was run on a real transcript. The only runs so
+far are unit tests on synthetic text (tests/test_score_comm.py). The original file is
+not edited; this file only adds to it.
+
+WHY THIS EXISTS
+The original preregistration scored transcripts only. The project's full pipeline
+(Stages 1 to 7) also uses diarization, screen state and a vision model, and the
+supervisor's notes ask for more than speech: quality and accuracy of content, time
+spent, visuals, questions raised and answered, writing on the board, expression,
+movement, hand movement, body language, engagement and multimodality. This file says
+which of those can be measured now from the transcripts, and which need video that
+has not been downloaded yet.
+
+UNCHANGED
+M1 to M5, the judge setup, the 12-window hand check, predictions P1 to P7 and the
+procedure. The judge stays Qwen2.5 7B Instruct as preregistered. The 14B model used in
+Stage 2 of the main pipeline may be run later as a sensitivity check only if it fits
+in GPU memory; that has not been tested.
+
+ADDED TRANSCRIPT METRICS (defined in communication/score_comm.py, frozen with it)
+  M6  repetition rate: adjacent repeated words or repeated two-word phrases, per 1,000
+      words. Whisper drops most "um" and "uh" but keeps many repeats.
+  M7  signposting rate: phrases such as "today we", "last time", "to recap",
+      "in conclusion", per 1,000 words (organisation).
+  M8  MTLD lexical diversity, computed on lectures of at least 50 words.
+  M9  pace variability: standard deviation of words per 60-second window.
+  Q   questions per 10 minutes: sentences ending "?" in Whisper's punctuation.
+  X   example cues per 1,000 words ("for example", "suppose", "imagine").
+  V1  visual-dependency rate per 1,000 words ("as you can see", "this equation",
+      "on the board", "over here"), the transcript-only deixis detector of Stage 3.
+  V2  board and drawing cue rate per 1,000 words ("let me write", "write down",
+      "let me draw").
+  Phrases are counted once each, longest phrase first, so a stretch of speech is never
+  counted twice.
+These are descriptive. None gets a prediction, and none is combined into one score.
+
+HOW EACH NOTE IS HANDLED
+  Quality of content ........ judge criteria (clarity, organisation, defined terms,
+                              examples) plus M7 and X. Now.
+  Accuracy of content ....... NOT scored. A 7B model cannot verify physics or
+                              economics. Only the F1 content-error flag from rubric
+                              v2 is used: the judge may flag a suspected error with
+                              a timestamp, and I check every flag by hand.
+  Time spent ................ speech fraction, pauses (M4) and pace (M1, M9) now.
+                              Time per topic needs Stage 2 segmentation: later.
+  Visuals ................... V1 and V2 are proxies for how much a lecture leans on
+                              the screen or board. Actual visuals need video.
+  Questions raised .......... Q counts questions in the transcript, by anyone.
+  Questions answered ........ needs diarization, so it can tell a student's question
+                              from the lecturer's. Audio was deleted after
+                              transcription, so this needs a re-download.
+  Writing on the board ...... V2 now. Real detection needs video frames.
+  Expression, movement, hand
+  movement, body language,
+  engagement ................ video only. Not measured yet.
+  Effectiveness ............. cannot be measured. There are no student outcomes, so
+                              every measure here describes delivery, and none shows
+                              that it helped anyone learn.
+  Multimodality ............. needs the video stages above.
+
+VIDEO PILOT (not started)
+Download video for six lectures, one per course, and run Stage 1 (screen states),
+pose and face landmarks for movement and hand activity, and pyannote diarization.
+Follow the TeachObs coding scheme (gesture, board work, pointing, visual materials,
+questioning, feedback) at 15-second scenes. Report the pilot as a feasibility result
+with no claims about the 103-lecture corpus. Video of 103 lectures is about 116 hours
+and is not planned.
+
+REFERENCES CHECKED
+  TeachObs (arXiv 2605.30673): 39 binary observation codes per 15-second scene, 20
+    visual and 19 non-visual. Used as the coding scheme for the pilot.
+  M-Powering Teachers (Stanford EduNLP): NLP feedback on classroom talk, including
+    questioning quality. The project page does not define its measures, so none are
+    copied here; the cited papers must be read first.
+  ClassMind: a lesson-plan and quiz generator, not a measurement tool. Not used.
+  LearningCues: could not be identified from the name alone. Not used.
+
+RESULTS VISUALS
+analyze.py will draw one strip plot per metric by course and a per-lecture timeline of
+pace, pauses and questions. All 103 lectures are plotted, with no exclusions.
